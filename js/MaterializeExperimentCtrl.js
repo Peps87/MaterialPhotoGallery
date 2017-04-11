@@ -14,28 +14,39 @@ angular.module('myApp', [])
                     positionAreaVisible = $(window).scrollTop();
                     areaVisible = window.innerHeight;
                     console.log(positionAreaVisible);
+
                 });
 
 
                 var closeFoto = function() {
                     if (angular.isDefined(fotoIdOld) && fotoIdOld != "") {
+                        var fotoElementStatic = $("#static_container_" + fotoIdOld);
                         var fotoElementCnt = $("#container_" + fotoIdOld);
                         var fotoElementX = $("#" + fotoIdOld);
                         var fotoElementY = $("#interno_" + fotoIdOld);
 
                         //fotoElementX.removeClass("active");
-
+                        var initialPositionSTATIC = fotoElementStatic.offset();
                         var initialPositionECX = fotoElementCnt.offset();
                         var lastPositionX = fotoElementX.offset();
                         var lastPositionY = fotoElementY.offset();
-                        var calcXtranslateForClose = initialPositionECX.left - lastPositionX.left;
-                        var calcYtranslateForClose = initialPositionECX.top - lastPositionY.top;
+                        //   var calcXtranslateForClose = initialPositionECX.left - lastPositionX.left;
+                        //   var calcYtranslateForClose = initialPositionECX.top - lastPositionY.top;
+                        var calcYtranslateForSTATIC = initialPositionSTATIC.top - initialPositionECX.top;
+                        var translateStaticPosition = "translateY(" + calcYtranslateForSTATIC + "px)";
                         //  translateOldXposition = "translateX(" + calcXtranslateForClose + "px)";
                         // translateOldYposition = "translateY(" + calcYtranslateForClose + "px)" + " scale(1)";
                         translateOldXposition = "translateX(0px)";
                         translateOldYposition = "translateY(0px)" + " scale(1)";
                         fotoElementX.css("transform", translateOldXposition, "z-index", "0");
+                        // fotoElementCnt.css("transform", translateStaticPosition, "z-index", "0");
                         fotoElementY.css("transform", translateOldYposition, "z-index", "0");
+                        fotoElementX.css("transform", "none");
+                        fotoElementY.css("transform", "none");
+                        //  fotoElementCnt.css("transform", "none");
+                        fotoElementCnt.removeClass("active");
+                        fotoElementCnt.removeAttr("style");
+
 
                     }
 
@@ -70,6 +81,13 @@ angular.module('myApp', [])
                         var cssYtranslate = "translateY(" + calcYtranslate + "px)" + " scale(3.1)";
                         ElementContainerX.css("transform", cssXtranslate, "z-index", "1");
                         ElementContainerY.css("transform", cssYtranslate, "z-index", "1");
+
+                        var inner = initialPositionECX.top - positionAreaVisible;
+                        console.log("offset", initialPositionECX.top);
+                        console.log("inner", inner);
+                        ElementCONTAINER.css("top", inner)
+                        ElementCONTAINER.addClass("active");
+
                         //  ElementContainerX.addClass("active");
 
 
