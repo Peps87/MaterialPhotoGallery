@@ -39,15 +39,17 @@ angular.module('myApp', [])
                         translateOldXposition = "translateX(0px)";
                         translateOldYposition = "translateY(0px)" + " scale(1)";
                         fotoElementX.css("transform", translateOldXposition, "z-index", "0");
-                        // fotoElementCnt.css("transform", translateStaticPosition, "z-index", "0");
+                        var inner = initialPositionSTATIC.top - positionAreaVisible;
+
+                        fotoElementCnt.css({ "top": inner, "position": "fixed" });
+                        //    fotoElementCnt.css("transform", translateStaticPosition, "z-index", "0");
                         fotoElementY.css("transform", translateOldYposition, "z-index", "0");
                         fotoElementX.css("transform", "none");
                         fotoElementY.css("transform", "none");
-                        //  fotoElementCnt.css("transform", "none");
-                        fotoElementCnt.removeClass("active");
+                        // fotoElementCnt.removeClass("active");
                         fotoElementCnt.removeAttr("style");
-
-
+                        //  fotoElementCnt.css("transform", "none");
+                        //fotoIdOld = "";
                     }
 
                 }
@@ -57,7 +59,7 @@ angular.module('myApp', [])
                 $(window).click(function() {
 
                     closeFoto();
-
+                    fotoIdOld = "";
                 });
 
 
@@ -85,8 +87,8 @@ angular.module('myApp', [])
                         var inner = initialPositionECX.top - positionAreaVisible;
                         console.log("offset", initialPositionECX.top);
                         console.log("inner", inner);
-                        ElementCONTAINER.css("top", inner)
-                        ElementCONTAINER.addClass("active");
+                        ElementCONTAINER.css({ "top": inner, "position": "fixed" });
+                        // ElementCONTAINER.addClass("active");
 
                         //  ElementContainerX.addClass("active");
 
