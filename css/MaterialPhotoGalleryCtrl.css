@@ -4,7 +4,7 @@
     border-radius: 5%;
     width: 100%;
     height: 100%;
-    transition: 0.25s cubic-bezier(0.75, -0.01, 0.38, 1.01);
+    transition: 0.28s cubic-bezier(0.75, -0.01, 0.38, 1.01);
 }
 
 .myPhoto.active {
@@ -79,11 +79,11 @@ div#images img {
     position: initial;
 }
 
-.materialize-experiment-container .foto-container-y.active {
-    background: transparent;
+.materialize-experiment-container .foto-container-y:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.materialize-experiment-container .foto-container-y:hover {
+.materialize-experiment-container .foto-container-y.active {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 

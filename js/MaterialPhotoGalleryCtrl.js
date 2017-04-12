@@ -38,6 +38,7 @@ angular.module('appMaterialPhotoGallery', [])
                         fotoElementX.css("transform", translateOldXposition);
                         fotoElementY.css({ "transform": translateOldYposition });
                         singlePhoto.removeAttr("style")
+                        fotoElementY.removeClass("active");
                         fotoElementX.css("transform", "none");
                         fotoElementY.css("transform", "none");
 
@@ -74,12 +75,10 @@ angular.module('appMaterialPhotoGallery', [])
                         var singlePhoto = $("#myPhoto_" + fotoId);
                         var hY = ElementContainerY.innerHeight();
                         var lY = ElementContainerY.innerWidth();
-                        console.log(lY);
-                        console.log(hY);
+
                         var l = lY / 2;
                         var h = hY / 2;
-                        console.log(l);
-                        console.log(h);
+
                         var initialPositionECX = ElementCONTAINER.offset();
                         var widthWindow = $(window).width();
                         var lCenterAreaVisible = (widthWindow / 2) - 17;
@@ -90,10 +89,14 @@ angular.module('appMaterialPhotoGallery', [])
                         var cssYtranslate = "translateY(" + calcYtranslate + "px)" + " scale(4,5)";
 
                         ElementContainerX.css("transform", cssXtranslate);
+
                         ElementContainerY.css({ "transform": cssYtranslate });
 
+
+
+                        ElementContainerY.addClass("active");
+
                         singlePhoto.css({ "height": "60%", "border-top-left-radius": "5%", "border-top-right-radius": "5%", "border-bottom-left-radius": "0", "border-bottom-right-radius": "0" });
-                        //ElementContainerY.css({ "background": "white" });
 
 
                         var inner = initialPositionECX.top - positionAreaVisible;
@@ -134,7 +137,7 @@ angular.module('appMaterialPhotoGallery', [])
                 function getImgs(setId) {
                     var URL = "https://api.flickr.com/services/rest/" +
                         "?method=flickr.people.getPhotos" +
-                        "&api_key={{APIKEY}}}" +
+                        "&api_key={{APIKEY}}" +
                         "&user_id=" + setId +
                         "&privacy_filter=1" +
                         "&per_page=30" +
