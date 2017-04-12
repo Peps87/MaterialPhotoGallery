@@ -1,5 +1,5 @@
-angular.module('myApp', [])
-    .controller('MaterializeExperimentCtrl', function($scope, $http, $timeout) {
+angular.module('appMaterialPhotoGallery', [])
+    .controller('MaterialPhotoGalleryCtrl', function($scope, $http, $timeout) {
         var vm = this;
         (function($) {
             $(function() {
@@ -121,7 +121,6 @@ angular.module('myApp', [])
                 function getImgs(setId) {
                     var URL = "https://api.flickr.com/services/rest/" +
                         "?method=flickr.people.getPhotos" +
-                        "&api_key={{APIKEY}}" +
                         "&user_id=" + setId +
                         "&privacy_filter=1" +
                         "&per_page=30" +
@@ -154,7 +153,6 @@ angular.module('myApp', [])
 
 
 
-                getImgs("{{myId}}");
                 $('.button-collapse').sideNav();
                 $(".dropdown-button").dropdown();
                 $('.parallax').parallax();
