@@ -9,6 +9,7 @@ angular.module('appMaterialPhotoGallery', [])
                 var fotoIdOld = "";
                 var translateOldXposition = "";
                 var translateOldYposition = "";
+                var fotoUrlold = "";
 
                 $(window).scroll(function() {
                     positionAreaVisible = $(window).scrollTop();
@@ -22,6 +23,7 @@ angular.module('appMaterialPhotoGallery', [])
                         var fotoElementCnt = $("#container_" + fotoIdOld);
                         var fotoElementX = $("#" + fotoIdOld);
                         var fotoElementY = $("#interno_" + fotoIdOld);
+                        var singlePhoto = $("#myPhoto_" + fotoIdOld);
                         var initialPositionSTATIC = fotoElementStatic.offset();
                         var initialPositionECX = fotoElementCnt.offset();
                         var lastPositionX = fotoElementX.offset();
@@ -29,14 +31,18 @@ angular.module('appMaterialPhotoGallery', [])
                         var calcYtranslateForSTATIC = initialPositionSTATIC.top - initialPositionECX.top;
                         var translateStaticPosition = "translateY(" + calcYtranslateForSTATIC + "px)";
                         translateOldXposition = "translateX(0px)";
-                        translateOldYposition = "translateY(0px)" + " scale(1)";
+                        translateOldYposition = "translateY(0px)" + " scale(1,1)";
                         var inner = initialPositionSTATIC.top - positionAreaVisible;
+
                         fotoElementCnt.css({ "top": inner, "position": "fixed" });
-                        fotoElementX.css("transform", translateOldXposition, "z-index", "0");
-                        fotoElementY.css("transform", translateOldYposition, "z-index", "0");
+                        fotoElementX.css("transform", translateOldXposition);
+                        fotoElementY.css({ "transform": translateOldYposition });
+                        singlePhoto.removeAttr("style")
                         fotoElementX.css("transform", "none");
                         fotoElementY.css("transform", "none");
+
                         $timeout(function() {
+                            singlePhoto.css({ "height": "100%" });
                             fotoElementCnt.removeAttr("style");
                         }, 500);
 
@@ -51,20 +57,21 @@ angular.module('appMaterialPhotoGallery', [])
 
                     closeFoto();
                     fotoIdOld = "";
+
                 });
 
 
 
 
 
-                vm.openPhoto = function(fotoId) {
+                vm.openPhoto = function(fotoId, fotoUrl) {
 
                     closeFoto();
                     if (fotoId != fotoIdOld) {
                         var ElementCONTAINER = $("#container_" + fotoId);
                         var ElementContainerX = $("#" + fotoId);
                         var ElementContainerY = $("#interno_" + fotoId);
-
+                        var singlePhoto = $("#myPhoto_" + fotoId);
                         var hY = ElementContainerY.innerHeight();
                         var lY = ElementContainerY.innerWidth();
                         console.log(lY);
@@ -80,10 +87,14 @@ angular.module('appMaterialPhotoGallery', [])
                         var calcXtranslate = lCenterAreaVisible - initialPositionECX.left;
                         var calcYtranslate = hCenterAreaVisible - initialPositionECX.top;
                         var cssXtranslate = "translateX(" + calcXtranslate + "px)";
-                        var cssYtranslate = "translateY(" + calcYtranslate + "px)" + " scale(3.1)";
+                        var cssYtranslate = "translateY(" + calcYtranslate + "px)" + " scale(4,5)";
 
-                        ElementContainerX.css("transform", cssXtranslate, "z-index", "1");
-                        ElementContainerY.css("transform", cssYtranslate, "z-index", "1");
+                        ElementContainerX.css("transform", cssXtranslate);
+                        ElementContainerY.css({ "transform": cssYtranslate });
+
+                        singlePhoto.css({ "height": "60%", "border-top-left-radius": "5%", "border-top-right-radius": "5%", "border-bottom-left-radius": "0", "border-bottom-right-radius": "0" });
+                        //ElementContainerY.css({ "background": "white" });
+
 
                         var inner = initialPositionECX.top - positionAreaVisible;
                         ElementCONTAINER.css({ "top": inner, "position": "fixed" });
@@ -93,11 +104,13 @@ angular.module('appMaterialPhotoGallery', [])
 
 
                         fotoIdOld = fotoId;
+                        fotoUrlold = fotoUrl;
 
 
                         event.stopPropagation();
                     } else {
                         fotoIdOld = "";
+                        fotoUrlold = "";
                     }
 
 
@@ -121,7 +134,7 @@ angular.module('appMaterialPhotoGallery', [])
                 function getImgs(setId) {
                     var URL = "https://api.flickr.com/services/rest/" +
                         "?method=flickr.people.getPhotos" +
-                        "&api_key={{APIKEY}}" +
+                        "&api_key={{APIKEY}}}" +
                         "&user_id=" + setId +
                         "&privacy_filter=1" +
                         "&per_page=30" +

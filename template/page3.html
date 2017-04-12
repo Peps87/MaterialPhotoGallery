@@ -101,9 +101,13 @@
                     <div class="row center">
                         <div ng-repeat="foto in fotografie track by $index" class="col s6 m2 col-margin-bottom">
                             <div id="static_container_{{foto.id}}" class="static-container">
-                                <div id="container_{{foto.id}}" class="foto-container" ng-click="vm.openPhoto(foto.id)">
+                                <div id="container_{{foto.id}}" class="foto-container" ng-click="vm.openPhoto(foto.id,foto.url)">
                                     <div id="{{foto.id}}" class="foto-container-x {{foto.id}} ">
-                                        <div id="interno_{{foto.id}}" ng-style="{'background': 'url({{foto.url}})','background-size':'cover' }" class="foto-container-y waves-effect waves-light"></div>
+                                        <div id="interno_{{foto.id}}" class="foto-container-y ">
+                                            <img id="myPhoto_{{foto.id}}" ng-src="{{foto.url}}" class="myPhoto" alt="" />
+
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>

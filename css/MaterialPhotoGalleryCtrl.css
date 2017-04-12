@@ -1,3 +1,16 @@
+.waves-effect img.myPhoto {}
+
+.myPhoto {
+    border-radius: 5%;
+    width: 100%;
+    height: 100%;
+    transition: 0.25s cubic-bezier(0.75, -0.01, 0.38, 1.01);
+}
+
+.myPhoto.active {
+    height: 50%;
+}
+
 .fixed-footer {
     margin-top: 60px;
     width: 100%;
@@ -55,15 +68,19 @@ div#images img {
 }
 
 .materialize-experiment-container .foto-container-y {
+    background: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     width: 100%;
     height: 100%;
-    background: grey;
     -moz-border-radius: 20%;
     -webkit-border-radius: 20%;
-    border-radius: 20%;
+    border-radius: 5%;
     transition: 0.4s cubic-bezier(0.75, -0.01, 0.38, 1.01);
     position: initial;
+}
+
+.materialize-experiment-container .foto-container-y.active {
+    background: transparent;
 }
 
 .materialize-experiment-container .foto-container-y:hover {
