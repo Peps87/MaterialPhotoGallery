@@ -98,6 +98,7 @@ angular.module('appMaterialPhotoGallery', [])
                 function getImgs(setId) {
                     var URL = "https://api.flickr.com/services/rest/" +
                         "?method=flickr.people.getPhotos" +
+                        "&api_key=APIKEY" +
                         "&user_id=" + setId +
                         "&privacy_filter=1" +
                         "&per_page=90" +
@@ -120,6 +121,7 @@ angular.module('appMaterialPhotoGallery', [])
                     console.log("fotografie", $scope.fotografie);
                 }
 
+                getImgs("ID");
                 $('.button-collapse').sideNav();
                 $(".dropdown-button").dropdown();
                 $('.parallax').parallax();
