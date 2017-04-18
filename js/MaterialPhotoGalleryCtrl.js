@@ -11,10 +11,12 @@ angular.module('appMaterialPhotoGallery', [])
                 var translateOldYposition = "";
                 var fotoUrlold = "";
 
+
                 $(window).scroll(function() {
                     positionAreaVisible = $(window).scrollTop();
                     areaVisible = window.innerHeight;
                 });
+
 
 
                 var closeFoto = function() {
@@ -33,7 +35,6 @@ angular.module('appMaterialPhotoGallery', [])
                         translateOldXposition = "translateX(0px)";
                         translateOldYposition = "translateY(0px)" + " scale(1,1)";
                         var inner = initialPositionSTATIC.top - positionAreaVisible;
-
                         fotoElementCnt.css({ "top": inner, "position": "fixed" });
                         fotoElementX.css("transform", translateOldXposition);
                         fotoElementY.css({ "transform": translateOldYposition });
@@ -41,32 +42,23 @@ angular.module('appMaterialPhotoGallery', [])
                         fotoElementY.removeClass("active");
                         fotoElementX.css("transform", "none");
                         fotoElementY.css("transform", "none");
-
                         $timeout(function() {
                             singlePhoto.css({ "height": "100%" });
                             fotoElementCnt.removeAttr("style");
                         }, 500);
-
-
                     }
-
                 }
 
 
 
                 $(window).click(function() {
-
                     closeFoto();
                     fotoIdOld = "";
-
                 });
 
 
 
-
-
                 vm.openPhoto = function(fotoId, fotoUrl) {
-
                     closeFoto();
                     if (fotoId != fotoIdOld) {
                         var ElementCONTAINER = $("#container_" + fotoId);
@@ -75,10 +67,8 @@ angular.module('appMaterialPhotoGallery', [])
                         var singlePhoto = $("#myPhoto_" + fotoId);
                         var hY = ElementContainerY.innerHeight();
                         var lY = ElementContainerY.innerWidth();
-
                         var l = lY / 2;
                         var h = hY / 2;
-
                         var initialPositionECX = ElementCONTAINER.offset();
                         var widthWindow = $(window).width();
                         var lCenterAreaVisible = (widthWindow / 2) - 17;
@@ -86,50 +76,21 @@ angular.module('appMaterialPhotoGallery', [])
                         var calcXtranslate = lCenterAreaVisible - initialPositionECX.left;
                         var calcYtranslate = hCenterAreaVisible - initialPositionECX.top;
                         var cssXtranslate = "translateX(" + calcXtranslate + "px)";
-                        var cssYtranslate = "translateY(" + calcYtranslate + "px)" + " scale(4,5)";
-
+                        var cssYtranslate = "translateY(" + calcYtranslate + "px)" + " scale(4,4.25)";
                         ElementContainerX.css("transform", cssXtranslate);
-
                         ElementContainerY.css({ "transform": cssYtranslate });
-
-
-
                         ElementContainerY.addClass("active");
-
-                        singlePhoto.css({ "height": "60%", "border-top-left-radius": "5%", "border-top-right-radius": "5%", "border-bottom-left-radius": "0", "border-bottom-right-radius": "0" });
-
-
+                        singlePhoto.css({ "height": "72%", "border-top-left-radius": "5%", "border-top-right-radius": "5%", "border-bottom-left-radius": "0", "border-bottom-right-radius": "0" });
                         var inner = initialPositionECX.top - positionAreaVisible;
                         ElementCONTAINER.css({ "top": inner, "position": "fixed" });
-
-
-
-
-
                         fotoIdOld = fotoId;
                         fotoUrlold = fotoUrl;
-
-
                         event.stopPropagation();
                     } else {
                         fotoIdOld = "";
                         fotoUrlold = "";
                     }
-
-
-
                 }
-
-
-
-
-
-
-
-
-
-
-
 
 
                 vm.spinner = true;
@@ -137,10 +98,9 @@ angular.module('appMaterialPhotoGallery', [])
                 function getImgs(setId) {
                     var URL = "https://api.flickr.com/services/rest/" +
                         "?method=flickr.people.getPhotos" +
-                        "&api_key={{APIKEY}}" +
                         "&user_id=" + setId +
                         "&privacy_filter=1" +
-                        "&per_page=30" +
+                        "&per_page=90" +
                         "&format=json&nojsoncallback=1";
 
                     $scope.fotografie = [];
@@ -149,7 +109,7 @@ angular.module('appMaterialPhotoGallery', [])
                     $http.get(URL, {}).then(function(data) {
                         console.log("FotoFlickr", data);
                         angular.forEach(data.data.photos.photo, function(photo) {
-                            var img_src = "http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_m.jpg";
+                            var img_src = "http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_z.jpg";
                             photo.url = img_src;
                             $scope.fotografie.push(photo);
 
@@ -160,20 +120,27 @@ angular.module('appMaterialPhotoGallery', [])
                     console.log("fotografie", $scope.fotografie);
                 }
 
-
-
-
-
-
-
-
-
-
-
-                getImgs("{{myId}}");
                 $('.button-collapse').sideNav();
                 $(".dropdown-button").dropdown();
                 $('.parallax').parallax();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
