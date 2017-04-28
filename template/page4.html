@@ -3,8 +3,9 @@
 
 <head>
     <script src="../materialize/js/angular.min.js"></script>
-    <script src="../js/MaterialPhotoGalleryCtrl.js"></script>
-    <link type="text/css" rel="stylesheet" href="../css/MaterialPhotoGalleryCtrl.css">
+    <script src="../js/page4.js"></script>
+    <script src="../js/directive.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/page4.css">
     <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css" media="screen,projection">
     <link rel=" stylesheet " href="http://fonts.googleapis.com/icon?family=Material+Icons">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +13,7 @@
 </head>
 
 <body>
-    <div class="materialize-experiment-container" ng-controller="MaterialPhotoGalleryCtrl as vm">
+    <div class="materialize-experiment-container" ng-controller="page4 as vm">
         <div class="navbar-fixed">
             <ul id="dropdown1" class="dropdown-content">
                 <li><a href="#!">one</a></li>
@@ -86,6 +87,16 @@
                     <h2 class="header">Material Photogallery</h2>
                     <p class="grey-text text-darken-3 lighten-3">First release of a material photogallery.</p>
                 </div>
+                <div class="row container">
+
+                    <form>
+                        <div class="input-field col s3">
+                            <input id="last_name" type="text" class="validate">
+                            <label for="last_name">Last Name</label>
+                        </div>
+                    </form>
+
+                </div>
             </div>
             <div class="section photogallery">
                 <div ng-hide="vm.spinner==false" class="col s12">
@@ -127,8 +138,12 @@
                 </ul>
             </div>
         </main>
+
         <footer>
-            <div class="fixed-footer"> </div>
+            <div class="fixed-footer">
+                <hello-world></hello-world>
+            </div>
+
         </footer>
     </div>
 
