@@ -105,7 +105,7 @@
                      "&api_key=" +
                      "&user_id=" + setId +
                      "&privacy_filter=1" +
-                     "&per_page=90" +
+                     "&per_page=6" +
                      "&format=json&nojsoncallback=1";
 
                  $scope.fotografie = [];
@@ -142,7 +142,9 @@
 
 
 
+             vm.photoDirective = [
 
+             ];
 
 
 

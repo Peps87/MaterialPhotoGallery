@@ -1,3 +1,10 @@
+.direttiva-section {
+    height: auto;
+    background: rgba(128, 128, 128, 0.23);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .myPhoto {
     border-radius: 5%;
     width: 133%;

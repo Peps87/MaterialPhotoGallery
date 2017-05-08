@@ -6,6 +6,7 @@
     <script src="../js/page4.js"></script>
     <script src="../js/directive.js"></script>
     <link type="text/css" rel="stylesheet" href="../css/page4.css">
+    <link type="text/css" rel="stylesheet" href="../css/direttiva.css">
     <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css" media="screen,projection">
     <link rel=" stylesheet " href="http://fonts.googleapis.com/icon?family=Material+Icons">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -108,6 +109,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="container">
                     <div class="row center">
                         <div ng-repeat="foto in fotografie track by $index" class="col s6 m2 col-margin-bottom">
@@ -116,8 +119,6 @@
                                     <div id="{{foto.id}}" class="foto-container-x {{foto.id}} ">
                                         <div id="interno_{{foto.id}}" class="foto-container-y">
                                             <img id="myPhoto_{{foto.id}}" ng-src="{{foto.url}}" class="myPhoto" alt="" />
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -125,6 +126,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="direttiva-section">
+                    <div class="">
+                        <div class="row center">
+                            <hello-world photos="vm.photoDirective" item-md="8" item-sm="5" item-xs="2"></hello-world>
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
             <div class="fixed-action-btn horizontal click-to-toggle ">
                 <a class="btn-floating btn-large blu ">
@@ -141,7 +152,7 @@
 
         <footer>
             <div class="fixed-footer">
-                <hello-world></hello-world>
+
             </div>
 
         </footer>

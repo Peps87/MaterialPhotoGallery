@@ -1,3 +1,7 @@
-<div>
-    <p>Hello World</p>
+<div class="gallery-container">
+    <div id="gallery" class="">
+        <div id="photo_{{$index}}" class="photo" ng-repeat="photo in photos">
+            <img class="fotonuova" ng-src="{{photo.src}}" alt="{{photo.alt}}">
+        </div>
+    </div>
 </div>

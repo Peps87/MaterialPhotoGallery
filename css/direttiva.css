@@ -1,0 +1,31 @@
+.gallery-container {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#gallery {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+#gallery .photo {
+    background: red;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+#gallery .photo.vertical img.fotonuova {
+    position: relative;
+    top: -50%;
+}
+
+.fotonuova {
+    width: 100%;
+}
+
+.fotonuova.vertical-photo {
+    margin-top: -20%;
+}
