@@ -1,6 +1,6 @@
 <div class="gallery-container">
     <div id="gallery" class="">
-        <div id="photo_{{$index}}" class="photo" ng-repeat="photo in photos">
+        <div id="photo_{{$index}}" class="photo {{photo.classe}}" ng-repeat="photo in photos track by $index">
             <img class="fotonuova" ng-src="{{photo.src}}" alt="{{photo.alt}}">
         </div>
     </div>

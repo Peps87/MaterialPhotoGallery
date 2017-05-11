@@ -143,7 +143,24 @@
 
 
              vm.photoDirective = [
-
+                 { alt: "foto numero 1", src: "../image/a.jpg" },
+                 { alt: "foto numero 2", src: "../image/d.jpg" },
+                 { alt: "foto numero 3", src: "../image/c.jpg" },
+                 { alt: "foto numero 4", src: "../image/b.jpg" },
+                 { alt: "foto numero 4", src: "../image/e.jpg" },
+                 { alt: "foto numero 4", src: "../image/f.jpg" },
+                 { alt: "foto numero 4", src: "../image/g.jpg" },
+                 { alt: "foto numero 4", src: "../image/h.jpg" },
+                 { alt: "foto numero 4", src: "../image/i.jpg" },
+                 { alt: "foto numero 4", src: "../image/l.jpg" },
+                 { alt: "foto numero 4", src: "../image/m.jpg" },
+                 { alt: "foto numero 4", src: "../image/n.jpg" },
+                 { alt: "foto numero 4", src: "../image/o.jpg" },
+                 { alt: "foto numero 4", src: "../image/p.jpg" },
+                 { alt: "foto numero 4", src: "../image/q.jpg" },
+                 { alt: "foto numero 4", src: "../image/s.jpg" },
+                 { alt: "foto numero 4", src: "../image/t.jpg" },
+                 { alt: "foto numero 4", src: "../image/u.jpg", hd: "" }
              ];
 
 

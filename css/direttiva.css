@@ -1,7 +1,4 @@
-.gallery-container {
-    margin-left: 20px;
-    margin-right: 20px;
-}
+.gallery-container {}
 
 #gallery {
     display: flex;
@@ -17,6 +14,12 @@
     overflow: hidden;
 }
 
+#gallery .photo.item-md,
+#gallery .photo.item-sm,
+#gallery .photo.item-xs {
+    background: transparent;
+}
+
 #gallery .photo.vertical img.fotonuova {
     position: relative;
     top: -50%;
@@ -28,4 +31,69 @@
 
 .fotonuova.vertical-photo {
     margin-top: -20%;
+}
+
+.photo:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.photo {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: 0.4s cubic-bezier(0.75, -0.01, 0.38, 1.01);
+}
+
+.photo.item-md:hover,
+.photo.item-sm:hover,
+.photo.item-xs:hover {
+    box-shadow: none;
+}
+
+.photo.item-md,
+.photo.item-sm,
+.photo.item-xs {
+    box-shadow: none;
+    transition: 0.4s cubic-bezier(0.75, -0.01, 0.38, 1.01);
+}
+
+.item-md {
+    display: none;
+}
+
+.item-sm {
+    display: none;
+}
+
+.item-xs {
+    display: none;
+}
+
+@media only screen and (max-width: 430px) {
+    #gallery {
+        justify-content: center;
+    }
+}
+
+@media only screen and (min-width: 430px) {
+    .gallery-container {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    .item-md {
+        display: block;
+    }
+}
+
+@media only screen and (min-width:769px) and (max-width:1199px) {
+    .item-sm {
+        display: block;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .item-xs {
+        display: block;
+    }
 }
