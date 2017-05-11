@@ -102,7 +102,7 @@
              function getImgs(setId) {
                  var URL = "https://api.flickr.com/services/rest/" +
                      "?method=flickr.people.getPhotos" +
-                     "&api_key=df8e349b8c5e1142899264fd53972591" +
+                     "&api_key=" +
                      "&user_id=" + setId +
                      "&privacy_filter=1" +
                      "&per_page=6" +
@@ -125,7 +125,7 @@
                  console.log("fotografie", $scope.fotografie);
              }
 
-             getImgs("32454651@N08");
+             getImgs("");
              $('.button-collapse').sideNav();
              $(".dropdown-button").dropdown();
              $('.parallax').parallax();
