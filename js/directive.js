@@ -1,6 +1,15 @@
 var pippo = angular.module('appMaterialPhotoGallery');
 
-pippo.directive('helloWorld', function($timeout) {
+
+pippo.constant('Const', {
+    BREAKPOINTS: {
+        XS: 768,
+        SM: 992,
+        MD: 1200
+    }
+});
+
+pippo.directive('helloWorld', function($timeout, Const) {
     return {
         restrict: 'E',
         templateUrl: '../template/direttiva.html',
@@ -13,17 +22,8 @@ pippo.directive('helloWorld', function($timeout) {
             var itemMd = attrs.itemMd;
             var itemSm = attrs.itemSm;
             var itemXs = attrs.itemXs;
-            console.log('itemMd', itemMd);
-            var xs = 768;
-            var sm = 992;
-            var md = 1200;
             var offset = 80;
-            var width = window.innerWidth;
-            var breakpoint = calculateBreakpoint(width);
             var numberPhotos = 0;
-
-            console.log('detected breakpoint', breakpoint);
-
 
             $timeout(function() {
                 numberPhotos = scope.photos.length;
@@ -32,22 +32,8 @@ pippo.directive('helloWorld', function($timeout) {
                 calculateItem(itemXs, "item-xs");
 
                 $timeout(function() {
-                    if (breakpoint == 'xs') {
-                        var widthXs = (width - offset) / itemXs;
-                        var heightXs = (widthXs / 4) * 3;
-                        $(element).find(".photo").width(widthXs);
-                        $(element).find(".photo").height(heightXs);
-                    } else if (breakpoint == 'sm') {
-                        var widthSm = (width - offset) / itemSm;
-                        var heightSm = (widthSm / 4) * 3;
-                        $(element).find(".photo").width(widthSm);
-                        $(element).find(".photo").height(heightSm);
-                    } else if (breakpoint == 'md') {
-                        var widthMd = (width - offset) / itemMd;
-                        var heightMd = (widthMd / 4) * 3;
-                        $(element).find(".photo").width(widthMd);
-                        $(element).find(".photo").height(heightMd);
-                    }
+                    photoAdapter();
+
                     $(".fotonuova").on('load', function() {
                         if (this.naturalHeight > this.naturalWidth) {
                             $(this).addClass('vertical-photo')
@@ -59,38 +45,41 @@ pippo.directive('helloWorld', function($timeout) {
 
 
 
-            $(window).resize(function() {
+            $(window).resize(photoAdapter);
+
+
+            function photoAdapter() {
                 var width = window.innerWidth;
                 var breakpoint = calculateBreakpoint(width);
                 console.log('detected breakpoint', breakpoint, width);
-                if (breakpoint == 'xs') {
+                if (breakpoint == Const.BREAKPOINTS.XS) {
                     var widthXs = (width - offset) / itemXs;
                     var heightXs = (widthXs / 4) * 3;
                     $(element).find(".photo").width(widthXs);
                     $(element).find(".photo").height(heightXs);
-                } else if (breakpoint == 'sm') {
+                } else if (breakpoint == Const.BREAKPOINTS.SM) {
                     var widthSm = (width - offset) / itemSm;
                     var heightSm = (widthSm / 4) * 3;
                     $(element).find(".photo").width(widthSm);
                     $(element).find(".photo").height(heightSm);
-                } else if (breakpoint == 'md') {
+                } else if (breakpoint == Const.BREAKPOINTS.MD) {
                     var widthMd = (width - offset) / itemMd;
                     var heightMd = (widthMd / 4) * 3;
                     $(element).find(".photo").width(widthMd);
                     $(element).find(".photo").height(heightMd);
                 }
 
-            });
+            }
 
 
             function calculateBreakpoint(width) {
 
-                if (width <= xs) {
-                    return 'xs';
-                } else if (width < md) {
-                    return 'sm';
+                if (width <= Const.BREAKPOINTS.XS) {
+                    return Const.BREAKPOINTS.XS;
+                } else if (width < Const.BREAKPOINTS.MD) {
+                    return Const.BREAKPOINTS.SM;
                 } else {
-                    return 'md';
+                    return Const.BREAKPOINTS.MD;
                 }
             }
 
